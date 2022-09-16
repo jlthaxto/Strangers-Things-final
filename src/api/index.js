@@ -108,6 +108,24 @@ export const createPost = async (token, {title, description, price, location, wi
   }
 }
 
+export const deletePost = async (token, _id) => {
+  try {
+    const response = await fetch(`${baseURL}/posts/${_id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    })
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    alert('There was an issue deleting this post')
+    console.log('error DELETING post')
+  }
+  
+}
+
 
 export const updatePost = async ({token, title, description, price, location, willDeliver, _id})=> {
   try {
@@ -153,20 +171,3 @@ export const createMessage = async ({postID, token, message}) => {
   }
 }
 
-
-export const deletePost = async (token, postID) => {
-  try {
-    const response = await fetch(`${baseURL}/posts/${postID}`, {
-      method: "DELETE",
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
-      }
-    })
-    const results = await response.json();
-    console.log(results)
-    return (results)
-  } catch (ex) {
-    console.log('error deleting post')
-  }
-}

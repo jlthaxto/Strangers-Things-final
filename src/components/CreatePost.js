@@ -63,7 +63,7 @@ const Createpost = ({ token, fetchPosts, navigate }) => {
 
 
       <button type="submit" onClick={() =>{ 
-      CreatePost(token,postID);
+      createPost(token,postID);
       }}>       
       Create A Post</button>
         </div>
